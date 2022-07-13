@@ -38,17 +38,17 @@ function CreateAccount() {
       body={show ? (
         <>
         Name<br/>
-        <input 
-          type="input" 
-          className="form-control" 
+        <input
+          type="input"
+          className="form-control"
           id="name"
-          placeholder="Username"
+          placeholder="Name"
           value={name}
           onChange={e => setName(e.currentTarget.value)}
-          /><br/>
+        /><br/>
         Email address<br/>
         <input 
-          type="input" 
+          type="email" 
           className="form-control" 
           id="email"
           placeholder="Email Address"

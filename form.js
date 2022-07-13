@@ -1,5 +1,5 @@
 function Form(props){
-  const [value, setValue] = React.useState(null)
+  const [value, setValue] = React.useState('')
 
   return(
     <>
