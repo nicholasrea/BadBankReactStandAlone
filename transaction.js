@@ -7,7 +7,7 @@ function Transaction(props) {
 
   // sets an inital value for the context array, will utilize later for user login functionality
   let user = 0;
-
+  const disable = (!transaction);
   //retrives the balance from the context, in an editable format
   let balancectx = (user) => {
     const context = React.useContext(UserContext);
@@ -17,6 +17,18 @@ function Transaction(props) {
   };
 
   let validateTrans = (trans, balance) =>{
+    if(isNaN(trans)){
+      setStatus('Please enter a valid Number')
+      setTimeout(() => setStatus(''), 5000);
+      return false;
+    }
+
+    if(trans < 0){
+      setStatus('Please enter a number greater than 0')
+      setTimeout(() => setStatus(''), 5000);
+      return false;
+    }
+    
     if(trans > balance){
       setStatus('Insuffcient Funds');
       setTimeout(() => setStatus(''), 5000);
@@ -58,7 +70,8 @@ function Transaction(props) {
     setTransaction('')
     setShow(true);
   }
-
+  
+ 
   return (
     <Card
       bgcolor="primary"
@@ -82,6 +95,7 @@ function Transaction(props) {
             onClick={() => {
               handleTransaction();
             }}
+            disabled={disable}
           >
             {props.id}
           </button>
@@ -90,7 +104,11 @@ function Transaction(props) {
         <>
           <h5>Success</h5>
           <h5>Thank you for your {props.id}</h5>
-          <button type="submit" className="btn btn-light" onClick={clearForm}>
+          <button 
+            type="submit" 
+            className="btn btn-light" 
+            onClick={clearForm} 
+          >  
           Make Another {props.id}
         </button>
         </>
