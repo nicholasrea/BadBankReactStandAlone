@@ -3,14 +3,13 @@ function Form(props){
 
   return(
     <>
-      {props.name}<br/>
+      {props.placeholder}<br/>
         <input 
           type={props.type}
           className="form-control"
           id={props.name}
           placeholder={props.placeholder} 
-          value={props.value}
-          onChange={e => setValue(e.currentTarget.value)}
+          onChange={props.onChange}
         />
 
     </>
