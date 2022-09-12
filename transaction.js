@@ -1,4 +1,5 @@
 function Transaction(props) {
+  
   const ctx = React.useContext(UserContext);
   const [transaction, setTransaction] = React.useState("");
   const [balance, setBalance] = React.useState("");
@@ -8,6 +9,7 @@ function Transaction(props) {
   // sets an inital value for the context array, will utilize later for user login functionality
   let user = 0;
   const disable = (!transaction);
+  
   //retrives the balance from the context, in an editable format
   let balancectx = (user) => {
     const context = React.useContext(UserContext);
@@ -29,7 +31,7 @@ function Transaction(props) {
       return false;
     }
     
-    if(trans > balance){
+    if(trans > balance && props.id === "Withdraw"){
       setStatus('Insuffcient Funds');
       setTimeout(() => setStatus(''), 5000);
       return false;
@@ -48,8 +50,15 @@ function Transaction(props) {
     // needed because transaction gets stored as a string
     let trans = parseFloat(transaction);
 
-    // determins if transaction is a deposit or withdraw
-    if (props.id === "Deposit") newBalance = balance + trans;
+    // determines if transaction is a deposit or withdraw
+    if (props.id === "Deposit") {
+      if(!validateTrans(trans, balance)){
+        clearForm();
+        return;
+      }
+        newBalance = balance + trans;
+    }
+
     if (props.id === "Withdraw"){
       if (!validateTrans(trans, balance)){
         clearForm();
@@ -57,6 +66,7 @@ function Transaction(props) {
       }
         newBalance = balance - trans;
     }    
+
     // changes the global context to the new value
     ctx.users[user].balance = newBalance;
 

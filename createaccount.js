@@ -13,6 +13,16 @@ function CreateAccount() {
       setTimeout(() => setStatus(''), 3000);
       return false;
     }
+   
+    //TODO:  Write logic for the validation
+    if(label === 'email'){
+
+    }
+
+    if(label === 'password'){
+
+    }
+
     return true;
   }
   
@@ -20,7 +30,10 @@ function CreateAccount() {
     if(!validate(name, 'name')) return;
     if(!validate(email, 'email')) return;
     if(!validate(password, 'password')) return
+
+    //TODO: POST to server the new account
     ctx.users.push({name, email, password, balance:100}); 
+    
     setShow(false);
   }
 
