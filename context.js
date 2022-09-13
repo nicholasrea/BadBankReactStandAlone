@@ -13,7 +13,7 @@ function Card(props) {
   }
 
   return (
-    <div className={classes()} style={{maxWitdth: "12rem" }}>
+    <div className={classes()} style={{maxWitdth: "8rem" }}>
       {props.header && (<div className="card-header">{props.header}</div>)}
       <div className="card-body">
         {props.title && (<h5 className="card-title">{props.title}</h5>)}
