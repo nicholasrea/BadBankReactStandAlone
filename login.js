@@ -2,6 +2,8 @@ function Login(){
     const [email, setEmail] = React.useState('');
     const [password, setPassword] = React.useState('');
     
+
+    //TODO: Write Functionality for the Login
     function handleLogin(){
         console.log('Email logged on:' + email)
     }

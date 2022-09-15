@@ -1,4 +1,8 @@
 function NavBar(){
+
+  //TODO: Fix Responsive issues
+
+  //TODO: Add Signed In User to right hand side of NavBar +2 points
   return(
     <>
     <nav className="navbar navbar-expand-lg navbar-light bg-light">
