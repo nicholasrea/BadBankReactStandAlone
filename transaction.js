@@ -1,8 +1,8 @@
 function Transaction(props) {
   
   const ctx = React.useContext(UserContext);
-  const [transaction, setTransaction] = React.useState("");
-  const [balance, setBalance] = React.useState("");
+  const [transaction, setTransaction] = React.useState('');
+  const [balance, setBalance] = React.useState('');
   const [status, setStatus] = React.useState('');
   const [show, setShow] = React.useState(true);
 
@@ -31,7 +31,7 @@ function Transaction(props) {
       return false;
     }
     
-    if(trans > balance && props.id === "Withdraw"){
+    if(trans > balance && props.id === 'Withdraw'){
       setStatus('Insuffcient Funds');
       setTimeout(() => setStatus(''), 5000);
       return false;
@@ -51,7 +51,7 @@ function Transaction(props) {
     let trans = parseFloat(transaction);
 
     // determines if transaction is a deposit or withdraw
-    if (props.id === "Deposit") {
+    if (props.id === 'Deposit') {
       if(!validateTrans(trans, balance)){
         clearForm();
         return;
@@ -59,7 +59,7 @@ function Transaction(props) {
         newBalance = balance + trans;
     }
 
-    if (props.id === "Withdraw"){
+    if (props.id === 'Withdraw'){
       if (!validateTrans(trans, balance)){
         clearForm();
         return; 
